@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{calligra}
+\usepackage{mathpazo}
+\usepackage{tikz}
+\usepackage{changepage}
+\usepackage{microtype}
+\usepackage{nicefrac}
+\usepackage{forest}
+\usepackage{xcolor}
+\usepackage{ifthen}
+
+% ==========================
+% ========== meta ==========
+
+\title{new document}
+\author{mrdandelion6}
+\date{august 2024}
+
+% === link colors ===
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+% ===
+
+% === par indentations ===
+\newenvironment{mypar}{%
+    \setlength{\parskip}{1em}%
+    \parindent=0pt%
+}{%
+    \par%
+}
+% ===
+
+% === section indentations ===
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-5ex \@plus -1ex \@minus -.2ex}% above
+                                   {1ex \@plus .2ex}% below
+                                   {\normalfont\large\bfseries}}%
+\makeatother
+% ===
+
+% === custom indentation ===
+\newenvironment{cindent}[1]{%
+    \par% start a new paragraph
+    \setlength{\leftskip}{#1}% set the left indentation
+    \noindent% no paragraph indentation
+    \ignorespaces% ignore spaces after \begin{customindent}
+}{%
+    \par% end the paragraph
+}
+% ===
+
+% === proof ===
+\renewenvironment{proof}{\noindent{\textit{proof.}} 
+\begin{cindent}{0.5cm}
+
+\vspace{-0.5cm}}
+{\end{cindent}\hfill$\square$}
+% ===
+
+% === thm ===
+\newenvironment{thm}[2][\unskip]{%
+\vspace{0.2cm}
+\noindent{\textbf{#1} \ifthenelse{\equal{#2}{\unskip}}{}{#2}}% check if the second argument is provided
+\begin{cindent}{0.5cm}
+
+\vspace{-0.5cm}}
+{\end{cindent}\hfill$\blacklozenge$}
+% ===
+
+
+% === tikz ===
+\tikzset{
+    every child/.style={
+        edge from parent/.style={draw, ->}
+    }
+}
+% ===
+
+% ========== meta ==========
+% ==========================
+
+\begin{document}
+
+\maketitle
+
+\end{document}
